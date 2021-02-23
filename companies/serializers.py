@@ -11,10 +11,10 @@ class CompanyModelSerializer(serializers.ModelSerializer):
     symbol = serializers.CharField()
     class Meta:
         model = Company
-        fields = ("name", "description", "symbol", "market_values")
+        fields = ("auto_id","name", "description", "symbol", "market_values")
 
     def validate_name(self, value):
-        if not len(value) <= 5:
+        if not len(value) <= 50:
             raise serializers.ValidationError("The name can't be greater than 50 characters")
         return value
     
@@ -26,8 +26,12 @@ class CompanyModelSerializer(serializers.ModelSerializer):
     def validate_symbol(self, value):
         if not len(value) <= 10:
             raise serializers.ValidationError("The Symbol can't be greater than 10 characters")
-
+        
+        if Company.objects.filter(symbol=value).exists():
+            raise serializers.ValidationError("The Symbol are you already registered. Try another Symbol")
+        
         response = requests.get("https://finnhub.io/api/v1/search?q={}&token=c0qavjf48v6s0mp617v0".format(value))
+
         if not response.json()["count"]:
             raise serializers.ValidationError("it's not exists this symbol in companies registered on the New York Stock Exchange.")
 
