@@ -23,6 +23,10 @@ class CompanyRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
 
     def delete(self, request, *args, **kwargs):
+        """
+        We just add logger to Delete method, to register
+        in a log if an error occurs.
+        """
         try:
             company = self.get_object()
             company.delete()
