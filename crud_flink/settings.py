@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'companies',
+    
 ]
 
 MIDDLEWARE = [
@@ -123,7 +126,7 @@ LOGGING = {
         }
     },
     'loggers':{
-        'back':{
+        'logger':{
             'level': 'DEBUG',
             'handlers': ['logfile']
         }
