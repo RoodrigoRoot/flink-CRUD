@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_500_INTERNAL_SERVER_ERROR, HTTP_204_NO_CONTENT
 from .serializers import CompanyModelSerializer
@@ -9,16 +9,17 @@ import logging
 
 logger = logging.getLogger("logger")
 
-class CompanyCreateAPIView(CreateAPIView):
+class CompanyListCreateAPIView(ListCreateAPIView):
     model = Company
     serializer_class = CompanyModelSerializer
+    queryset = Company.objects.all()
 
 
 class CompanyRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     model = Company
     serializer_class = CompanyModelSerializer
     queryset = Company.objects.all()
-    lookup_field = "symbol"
+    lookup_field = "auto_id"
 
 
     def delete(self, request, *args, **kwargs):
