@@ -20,6 +20,7 @@ class CompanyRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = CompanyModelSerializer
     queryset = Company.objects.all()
     lookup_field = "auto_id"
+    http_method_names = [u'get', u'patch', u'delete', u'head', u'options'] 
 
 
     def delete(self, request, *args, **kwargs):
