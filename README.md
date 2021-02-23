@@ -2,6 +2,7 @@
 Creat a CRUD (CREATE, READ, UPDATE and DELETE) project
 
 Requirements:
+
 ● Campo autogenerado con un formato UUID-4
 ● Nombre de la compañía (campo abierto de texto limitado a 50 caracteres)
 ● Descripción de la compañía (campo abierto de texto limitado a 100 caracteres)
@@ -10,11 +11,12 @@ Requirements:
 ● Validar si dicho símbolo es aceptado en las empresas registradas en la bolsa de valores de Nueva York.
 
 ## technologies
+
 At this project the tecnologies used are:
 
-* Python
-* Django
-* Postgres
-* Javascript
-* Docker
-* Boostrap
+- Python
+- Django
+- Postgres
+- Javascript
+- Docker
+- Boostrap
