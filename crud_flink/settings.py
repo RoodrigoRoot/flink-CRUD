@@ -125,7 +125,7 @@ LOGGING = {
         'logfile':{
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': env.str("LOG_DIR") + "/backend.log",
+            'filename': env.str("LOG_DIR") + "/backend.log", # Directoy and name's file to save logs
             'formatter': 'standard',
         }
     },
@@ -144,7 +144,7 @@ LOGGING = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 

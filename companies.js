@@ -3,6 +3,7 @@ class Companies{
     url = "http://localhost:8000/api/v1/companies/"
 
     async getCompanies(){
+        
         let response = await fetch(this.url)
         const companies = await response.json();
         return companies
@@ -28,27 +29,4 @@ class Companies{
     
     }
 
-    /*async actionsCompany(e){
-        e.preventDefault()
-        company_list.addEventListener('click', function(e){
-            let btn_delete_pressed = e.target.id == 'delete-company'
-            let btn_update_pressed = e.target.id == 'update-company'
-            let id = e.target.parentElement.dataset.id
-        
-            if(btn_delete_pressed){
-                let response = await fetch(`${url}/${id}`,
-                {
-                    method:'DELETE',
-                }
-                )
-                console.log(await response.json())
-                return "ok"
-                
-            }
-            else if(btn_update_pressed){
-                console.log(e.target.parentElement.dataset.id)
-            }
-        })
-
-    }*/
 }
