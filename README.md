@@ -10,7 +10,7 @@ Requirements:
 - Valores de mercado (Arreglo de 50 datos random separados por coma).
 - Validar si dicho símbolo es aceptado en las empresas registradas en la bolsa de valores de Nueva York.
 
-## technologies
+## Technologies
 
 At this project the tecnologies used are:
 
@@ -20,3 +20,13 @@ At this project the tecnologies used are:
 - Javascript
 - Docker
 - Boostrap
+## Installation
+We need Docker and docker-compose to run this project.
+
+#### Commands
+```docker-compose up```
+
+## Solutions and Test
+In this link: 
+https://docs.google.com/document/d/1xtoQ4Nd3-9Yf-yOtcgZBWYYjNK-eL7dWpBgTNRS6Y_s/edit?usp=sharing
+It will be possible to see in a brief and concise way which points were successfully concluded and which could not be completed.
