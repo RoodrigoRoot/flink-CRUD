@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_500_INTERNAL_SERVER_ERROR, HTTP_204_NO_CONTENT
+from django.views.generic import TemplateView
 from .serializers import CompanyModelSerializer
 from .models import Company
 import logging
@@ -36,3 +37,6 @@ class CompanyRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
         except Exception as e:
             logger.error("companies.views.delete-{}".format(str(e)))
             return Response(status=HTTP_500_INTERNAL_SERVER_ERROR, data={"error":"KO"})
+
+class CompanyTemplateView(TemplateView):
+    template_name = "index.html"
