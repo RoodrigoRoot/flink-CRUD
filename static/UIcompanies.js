@@ -1,6 +1,7 @@
 class UICompanies{
 
     company = new Companies()
+
     url = "http://localhost:8000/api/v1/companies"
     async UICreatecompany(){
         let company_response = await this.company.getCompanies()
@@ -80,10 +81,16 @@ class UICompanies{
             let btn_delete_pressed = e.target.id == 'delete-company';
             let btn_update_pressed = e.target.id == 'update-company';
             let id = e.target.parentElement.dataset.id;
-            
+            var csrftoken = this.company.getCookie('csrftoken');
+            console.log(btn_delete_pressed)
             if(btn_delete_pressed){
                 let response = await fetch(`${this.url}/${id}`,
                 {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                      },
                     method:'DELETE',
                 });
                 location.reload()
@@ -107,9 +114,11 @@ class UICompanies{
                     e.preventDefault()
                     let response = await fetch(`${this.url}/${id}`,{
                         method:'PATCH',
-                        headers:{
+                        headers: {
+                            'Accept': 'application/json',
                             'Content-Type': 'application/json',
-                        },
+                            'X-CSRFToken': csrftoken
+                          },
                         body: JSON.stringify({
                             name:name_company.value,
                             description:description.value,

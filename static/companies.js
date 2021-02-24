@@ -11,13 +11,15 @@ class Companies{
 
     async SendDataForm(e){
         e.preventDefault()
-        
+        let csrftoken = this.getCookie('csrftoken');
         let request = await fetch(this.url,
         {
             method:'POST',
-            headers:{
+            headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
-            },
+                'X-CSRFToken': csrftoken
+              },
             body: JSON.stringify({
                 name:name_company.value,
                 description:description.value,
@@ -28,5 +30,24 @@ class Companies{
         return request
     
     }
+
+
+
+    
+    getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
 
 }
